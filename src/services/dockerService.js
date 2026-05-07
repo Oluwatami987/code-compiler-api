@@ -6,7 +6,9 @@ const { randomUUID } = require('crypto')
 
 const IMAGE_MAP = {
   javascript: { image: 'compiler-javascript', filename: 'code.js', cmd: ['node', 'code.js'] },
-  python:     { image: 'compiler-python',     filename: 'code.py', cmd: ['python', 'code.py'] }
+  python:     { image: 'compiler-python',     filename: 'code.py', cmd: ['python', 'code.py'] },
+  go: { image: 'compiler-go', filename: 'main.go', cmd: ['go', 'run', 'main.go'] },
+  c: { image: 'compiler-c', filename: 'code.c', cmd: ['sh', '-c', 'gcc code.c -o code && ./code'] }
 }
 
 module.exports = async function runInSandbox({ language, code, stdin = '', timeoutMs = 10000 }) {
